@@ -6,15 +6,17 @@ class Rule:
     '''
 
     # l.h.s. term
-    l = None
+    l:str = None
     # r.h.s. terms 
-    r = None
+    r:list[str] = None
 
     # messages for error
     non_str_input_msg = "non str input"
     non_list_input_msg = "non list input"
+    non_rule_input_msg = "non rule input"
+    null_output_msg = "null output"
 
-    def __init__(self,left_term,right_terms):
+    def __init__(self,left_term:str,right_terms:list[str]):
         self.setLeftTerm(left_term)
         self.setRightTerms(right_terms)
         
@@ -29,14 +31,14 @@ class Rule:
         return copy_right_terms
         
 
-    def setLeftTerm(self,new_left_term):
+    def setLeftTerm(self,new_left_term:str):
         # check types of inputs
         if(not type(new_left_term) is str):
             raise ruleError(self.non_str_input_msg)
         # set the copies
         self.l = new_left_term + ""
 
-    def setRightTerms(self,new_right_terms):
+    def setRightTerms(self,new_right_terms:list[str]):
         # check types of inputs
         if(not type(new_right_terms) is list):
             raise ruleError(self.non_list_input_msg)
@@ -49,3 +51,20 @@ class Rule:
             copy_new_right_terms.append(term + "")
         # set the copies
         self.r = copy_new_right_terms
+    
+    def equals(self,another_rule):
+        if(not type(another_rule) is Rule):
+            raise ruleError(self.non_rule_input_msg)
+        another_left_term = another_rule.getLeftTerm()
+        another_right_terms = another_rule.getTheRightTerms()
+        if(self.l != another_left_term):
+            return False
+        if(self.r != another_right_terms):
+            return False
+        return True
+
+    def clone(self):
+        left_term = self.getLeftTerm()
+        right_terms = self.getTheRightTerms()
+        clone = Rule(left_term,right_terms)
+        return clone
