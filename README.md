@@ -1,8 +1,9 @@
 # syparsing
-I am going to implement syntactic analysis with Python
+I am going to implement syntactic analysis with Python.
 
 # Now Processing...
-learning and implementing CYK algorithm
+I am implementing and testing the procedure to create recognition table on CYK algorithm.
+[END] learning CYK algorithm
 
 |Source Code Name|Description|
 |---|---|
