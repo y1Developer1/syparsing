@@ -3,6 +3,7 @@ I am going to implement syntactic analysis with Python.
 
 # Now Processing...
 I am implementing and testing the procedure to create recognition table on CYK algorithm.
+
 [END] learning CYK algorithm
 
 |Source Code Name|Description|
